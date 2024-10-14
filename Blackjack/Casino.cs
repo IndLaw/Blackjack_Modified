@@ -8,6 +8,8 @@ namespace Blackjack
         public Dealer Dealer { get; private set; }
         public Table Table { get; private set; }
 
+        private NPCOpponents NPCList = new NPCOpponents();
+
         public Casino()
         {
         }
@@ -30,22 +32,17 @@ namespace Blackjack
         {
             var interactions = new Interactions();
             invitePlayer(interactions);
+            inviteNPCs();
 
-            while (Table.HasOpenSeats && interactions.MorePlayers())
-            {
-                invitePlayer(interactions);
-            }
-            if (!Table.HasOpenSeats)
-            {
-                Console.WriteLine("Table is full. Let's play!");
-                Thread.Sleep(2500);
-            }
+            Console.WriteLine("Table is full. Let's play!");
+            Thread.Sleep(2500);
+
         }
-       
+
         public void Operate()
         {
             while (Table.HasPlayers)
-            {                
+            {
                 var shoe = Table.Shoe;
 
                 Table.Draw();
@@ -95,7 +92,7 @@ namespace Blackjack
                     {
                         Dealer.Sweep(Dealer.Hand, Table.Tray);
                     }
-                }              
+                }
             }
         }
 
@@ -110,6 +107,15 @@ namespace Blackjack
             Table.Draw();
             Table.Sit(interactions.WelcomePlayer());
             Table.Draw();
+        }
+
+        private void inviteNPCs()
+        {
+            Table.Draw();
+            // choose 5 npcs and seat them
+            Table.SeatNPCs(NPCList.loadNPCs());
+            Table.Draw();
+
         }
 
         private void shuffle(Shoe shoe)

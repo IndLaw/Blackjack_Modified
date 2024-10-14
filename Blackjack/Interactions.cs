@@ -41,7 +41,8 @@ namespace Blackjack
             return new Player(name, bankroll);
         }
 
-        public bool MorePlayers() => YesNo("Are more players joining us today? ");
+
+        // public bool MorePlayers() => YesNo("Are more players joining us today? "); // unneeded
 
         public int GetBet(Player p)
         {

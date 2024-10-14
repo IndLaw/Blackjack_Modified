@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text;
 
+// Program created by https://github.com/lucidobjects
+
 //inspired by: 
 //https://codereview.stackexchange.com/questions/214390/my-blackjack-game-in-c-console
 namespace Blackjack

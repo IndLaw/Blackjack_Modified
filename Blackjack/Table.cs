@@ -9,7 +9,7 @@ namespace Blackjack
         //table rules and limits
         public static readonly int MinBet = 5;
         public static readonly int MaxBet = 500;
-        public static readonly int NumberOfSeats = 7;
+        public static readonly int NumberOfSeats = 5;
         public static readonly int NumberOfDecksInShoe = 6;                
         public static readonly int DealerHardStandValue = 17;
         public static readonly int DealerSoftStandValue = 18;
@@ -41,6 +41,8 @@ namespace Blackjack
         }
 
         public void Sit(Player player) => Players.Add(player);
+
+        public void SeatNPCs(List<Player> npcList) => Players.AddRange(npcList); // appends list of npcs to player list
 
         public void StartGame() => GameHasStarted = true;
 
