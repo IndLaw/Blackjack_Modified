@@ -1,4 +1,4 @@
-##Blackjack Modified
+## Blackjack Modified
 
 An attempt to add npc players with different behaviors to this blackjack project. Learning experience for C#.
 
