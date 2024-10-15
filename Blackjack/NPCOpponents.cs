@@ -8,39 +8,48 @@ namespace Blackjack
 {
     internal class NPCOpponents
     {
+        // init npc objs and list
         List<Player> npcPlayers = new List<Player>(5);
-        Player depressed = new Player("Depressed", 350);
-        Player weary = new Player("Weary", 50);
-        Player cruel = new Player("Cruel", 450);
-        Player conceited = new Player("Conceited", 1350);
-        Player determined = new Player("Determined", 250);
-        Player loving = new Player("Loving", 150);
-        Player dishonest = new Player("Dishonest",500);
-        Player proud = new Player("Proud", 600);
-        Player rational = new Player("Rational", 100);
-        
+        Player depressed = new Player("Depressed");
+        Player weary = new Player("Weary");
+        Player cruel = new Player("Cruel");
+        Player conceited = new Player("Conceited");
+        Player determined = new Player("Determined");
+        Player loving = new Player("Loving");
+        Player dishonest = new Player("Dishonest");
+        Player proud = new Player("Proud");
+        Player rational = new Player("Rational");
+        Random rand = new Random();
 
         public List<Player> loadNPCs()
         {
+            gatherFunds();
             selectOpponents();
             return npcPlayers;
         }
 
-        public void gatherFunds() // randomly generate the amount of money each character will bring to the table; unique to each
+        private void gatherFunds() // randomly generate the amount of money each character will bring to the table; unique to each
+        {
+            // rand * 50
+            depressed.setBankroll((rand.Next(7, 15) * 50)); // medium sized bankroll
+            cruel.setBankroll((rand.Next(7, 15) * 50)); // medium sized bankroll
+            weary.setBankroll((rand.Next(1, 8) * 50)); // low sized bankroll
+            conceited.setBankroll((rand.Next(14, 21) * 50)); // high sized bankroll
+            determined.setBankroll((rand.Next(7, 15) * 50)); // medium sized bankroll
+            loving.setBankroll((rand.Next(1, 8) * 50)); // low sized bankroll
+            dishonest.setBankroll((rand.Next(7, 15) * 50)); // medium sized bankroll
+            proud.setBankroll((rand.Next(14, 21) * 50)); // high sized bankroll
+            rational.setBankroll((rand.Next(1, 8) * 50)); // low sized bankroll
+        }
+
+        public void initNPCs() // unot sure if needed yet, may delete
         {
 
         }
 
-        public void initNPCs() // use gatherFunds() and initalize the npc
+        private void selectOpponents() // Selects players based on probability
         {
-
-        }
-
-        public void selectOpponents() // 
-        {
-            Random rand = new Random();
             
-
             while (npcPlayers.Count < 5) // no dupes
             {
                 int number = rand.Next(1, 101);

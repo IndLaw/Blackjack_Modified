@@ -57,6 +57,16 @@ namespace Blackjack
             Chips = bankroll;
         }
 
+        public Player(string name)
+        {
+            Name = name;
+        }
+
+        public void setBankroll(int bankroll) // for npcs
+        {
+            Chips = bankroll;
+        }
+
         public void InitialBet(decimal chips) => Hand.Bet(chips);
 
         public void Bet(PlayerHand hand, decimal chips) => hand.Bet(chips);
