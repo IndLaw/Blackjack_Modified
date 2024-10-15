@@ -1,6 +1,6 @@
 ## Blackjack Modified
 
-An attempt to add npc players with different behaviors to this blackjack project. Learning experience for C#.
+An attempt to add 5 npc players with different behaviors to this blackjack project. Learning experience for C#. May attempt to add features listed at the bottom.
 
 
 # Blackjack (C# .NET Core Console App)
