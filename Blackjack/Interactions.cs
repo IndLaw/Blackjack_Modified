@@ -5,6 +5,7 @@ namespace Blackjack
 {
     public class Interactions
     {
+        private NPCLogic npcLogic = new NPCLogic();
         private enum eAnswer
         {
             None, Yes, No
@@ -44,8 +45,13 @@ namespace Blackjack
 
         // public bool MorePlayers() => YesNo("Are more players joining us today? "); // unneeded
 
-        public int GetBet(Player p)
+        public int GetNPCBet(Player p) // use this to hook npcs into betting
         {
+            // give a bet based on npc characteristics
+           return npcLogic.BettingLogic(p, Table.MaxBet);
+        }
+        public int GetBet(Player p)
+        { 
             var bet = 0;
             var betIsValid = false;
 

@@ -42,7 +42,7 @@ namespace Blackjack
             rational.setBankroll((rand.Next(1, 8) * 50)); // low sized bankroll
         }
 
-        public void initNPCs() // unot sure if needed yet, may delete
+        public void initNPCs() // not sure if needed yet, may delete
         {
 
         }

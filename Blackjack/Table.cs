@@ -7,7 +7,7 @@ namespace Blackjack
     public class Table
     {
         //table rules and limits
-        public static readonly int MinBet = 5;
+        public static readonly int MinBet = 1;
         public static readonly int MaxBet = 500;
         public static readonly int NumberOfSeats = 5;
         public static readonly int NumberOfDecksInShoe = 6;                

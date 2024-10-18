@@ -39,6 +39,7 @@ namespace Blackjack
         }
 
         public decimal Chips { get; private set; }
+        public decimal initialChipCount { get; private set; } // for npc logic
         public decimal BettableChips => Chips - AllHands.Sum(h => h.Wager);
         public int TotalHandCount => WinCount + LossCount + PushCount;
         public int WinCount { get; private set; }
@@ -65,6 +66,7 @@ namespace Blackjack
         public void setBankroll(int bankroll) // for npcs
         {
             Chips = bankroll;
+            initialChipCount = bankroll;
         }
 
         public void InitialBet(decimal chips) => Hand.Bet(chips);

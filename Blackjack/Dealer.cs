@@ -12,7 +12,7 @@ namespace Blackjack
         private readonly int MinSlice = 50;
         private readonly int MaxSlice = 100;
 
-        private Random rnd = new Random();
+        private Random rand = new Random();
         private Interactions interactions = new Interactions();
 
         public DealerHand Hand { get; private set; } = new DealerHand();
@@ -38,23 +38,44 @@ namespace Blackjack
         {
             var leavingPlayers = new List<Player>();
 
-            table.Players.ForEach(p =>
-            {
-                if (p.Chips >= Table.MinBet)
-                {
-                    var bet = interactions.GetBet(p);
+            // have special case here for player 1 only
 
-                    if(bet == 0)
+            if (table.Players.ElementAt(0).Chips >= Table.MinBet)
+            {
+                var bet = interactions.GetBet(table.Players.ElementAt(0));
+
+                if (bet == 0)
+                {
+                    leavingPlayers.Add(table.Players.ElementAt(0));
+                }
+                else
+                {
+                    table.Players.ElementAt(0).InitialBet(bet);
+                }
+                table.Draw();
+            } // else????
+
+            // have this loop the rest of the players with a separate GetNPCBet() function
+
+            for (int i = 1; i < table.Players.Count; i++)
+            {
+                if (table.Players.ElementAt(i).Chips >= Table.MinBet)
+                {
+                    var bet = interactions.GetNPCBet(table.Players.ElementAt(i));
+                    Thread.Sleep(1000);
+
+                    if (bet == 0)
                     {
-                        leavingPlayers.Add(p);
+                        leavingPlayers.Add(table.Players.ElementAt(i));
                     }
                     else
                     {
-                        p.InitialBet(bet);
+                        table.Players.ElementAt(i).InitialBet(bet);
                     }
                     table.Draw();
-                }
-            });
+                } // else????
+            }
+
 
             if (leavingPlayers.Any())
             {
@@ -189,7 +210,7 @@ namespace Blackjack
             var shuffled = new List<Card>();
             while (raw.Any())
             {
-                var index = rnd.Next(raw.Count);
+                var index = rand.Next(raw.Count);
                 shuffled.Add(raw.ElementAt(index));
                 raw.RemoveAt(index);
             }
@@ -232,7 +253,7 @@ namespace Blackjack
 
         public bool KeepPlaying() => !Hand.IsBusted() && (KeepPlayingSoft || KeepPlayingHard);
 
-        public int Slice() => rnd.Next(MinSlice, MaxSlice);
+        public int Slice() => rand.Next(MinSlice, MaxSlice);
 
         public void Draw()
         {
