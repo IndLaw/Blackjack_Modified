@@ -10,9 +10,13 @@ namespace Blackjack
 
         private NPCOpponents NPCList = new NPCOpponents();
 
+        private int[] cardsInPlay; // prob should be obj, not primitive
+
         public Casino()
         {
         }
+
+        // function to get count should be in this file, can use
 
         //Test with a table that has been constructed externally
         //(The argument could be made that this is a better architecture overall)

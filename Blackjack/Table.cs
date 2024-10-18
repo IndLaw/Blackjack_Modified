@@ -55,7 +55,7 @@ namespace Blackjack
         public List<Player> PlayersWithBlackJack() => Players.Where(p => p.Hand.IsBlackjack()).ToList();
 
         public void Draw()
-        {
+        { 
             Console.Clear();
             Console.WriteLine($"Blackjack ${MinBet} to ${MaxBet}");
             Dealer.Draw();
