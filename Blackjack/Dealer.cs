@@ -103,7 +103,7 @@ namespace Blackjack
         }
 
         //main player decision tree
-        public void Play(Table table, PlayerHand hand)
+        public void Play(Table table, PlayerHand hand) // hooks for npc logic go here   <<<<<<<<<<<<<<<<<<<<<<<<<<<<
         {
             var player = hand.Player;
             var name = player.Name;
@@ -261,7 +261,7 @@ namespace Blackjack
             Hand.Draw();
         }
 
-        private void dealAll(Table table)
+        private void dealAll(Table table) // get hands from here? table.ActiveHands should have the cards of every player?
         {
             table.ActiveHands.ForEach(h =>
             {
